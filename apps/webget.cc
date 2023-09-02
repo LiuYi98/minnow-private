@@ -9,14 +9,14 @@ using namespace std;
 
 void get_URL( const string& host, const string& path )
 {
-  auto address = Address(host, "http");
+  auto address = Address( host, "http" );
   auto socket = TCPSocket();
-  socket.connect(address);
+  socket.connect( address );
   auto payload = "GET " + path + " HTTP/1.1\r\nHost: " + host + "\r\nConnection: close\r\n\r\n";
-  socket.write(payload);
+  socket.write( payload );
   string buffer;
-  while (!socket.eof()) {
-    socket.read(buffer);
+  while ( !socket.eof() ) {
+    socket.read( buffer );
     cout << buffer;
   }
 }

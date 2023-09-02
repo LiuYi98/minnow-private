@@ -4,14 +4,14 @@
 
 using namespace std;
 
-ByteStream::ByteStream( uint64_t capacity ): 
-  capacity_( capacity ), 
-  s {""}, 
-  current { 0 }, 
-  total_pushed { 0 }, 
-  total_popped { 0 }, 
-  closed { false }, 
-  error { false }
+ByteStream::ByteStream( uint64_t capacity )
+  : capacity_( capacity )
+  , s { "" }
+  , current { 0 }
+  , total_pushed { 0 }
+  , total_popped { 0 }
+  , closed { false }
+  , error { false }
 {}
 
 void Writer::push( string data )
@@ -44,7 +44,7 @@ void Writer::set_error()
 bool Writer::is_closed() const
 {
   // Your code here.
-  return { this->closed };
+  return this->closed;
 }
 
 uint64_t Writer::available_capacity() const
@@ -62,36 +62,35 @@ uint64_t Writer::bytes_pushed() const
 string_view Reader::peek() const
 {
   // Your code here.
-  return this->s.substr(0, 1);
+  return this->s;
 }
 
 bool Reader::is_finished() const
 {
   // Your code here.
-  return this->closed || ( 0 == this->current );
+  return this->closed && ( 0 == this->current );
 }
 
 bool Reader::has_error() const
 {
   // Your code here.
-  return { this->error };
+  return this->error;
 }
 
 void Reader::pop( uint64_t len )
 {
-  if (current == 0) {
+  if ( current == 0 ) {
     return;
   }
   int64_t count;
-  if (len < this->current) {
+  if ( len < this->current ) {
     count = len;
   } else {
     count = this->current;
   }
-  this->s = this->s.substr(count, s.length());
+  this->s = this->s.substr( count, s.length() );
   this->current -= count;
   this->total_popped += count;
-  // Your code here.
 }
 
 uint64_t Reader::bytes_buffered() const
