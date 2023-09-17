@@ -33,5 +33,23 @@ public:
   uint64_t bytes_pending() const;
 
 private:
-  uint64_t expecting_index;
+
+  class buf_string
+  {
+  private:
+    string data;
+    uint64_t index;
+  public:
+    buf_string(string data, string index): this.da {}
+    ~buf_string() {}
+  };
+
+
+
+
+  uint32_t expecting_index;
+  uint32_t pending_bytes;
+  uint32_t capacity;
+
+  vector<buf_string> buf;
 };

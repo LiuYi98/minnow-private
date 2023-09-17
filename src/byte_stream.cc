@@ -1,6 +1,7 @@
 #include <stdexcept>
 
 #include "byte_stream.hh"
+#include <string>
 
 using namespace std;
 
