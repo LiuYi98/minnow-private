@@ -34,22 +34,22 @@ public:
 
 private:
 
-  class buf_string
+  class BufString
   {
   private:
-    string data;
+    std::string data;
     uint64_t index;
   public:
-    buf_string(string data, string index): this.da {}
-    ~buf_string() {}
+    BufString(string data, string index): this.da {}
+    ~BufString() {}
   };
 
 
 
 
-  uint32_t expecting_index;
-  uint32_t pending_bytes;
-  uint32_t capacity;
+  uint64_t expecting_index;
+  uint64_t pending_bytes;
+  uint64_t capacity;
 
-  vector<buf_string> buf;
+  std::vector<BufString> buf;
 };
